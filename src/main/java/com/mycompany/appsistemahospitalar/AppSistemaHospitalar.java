@@ -4,6 +4,8 @@
 
 package com.mycompany.appsistemahospitalar;
 
+import com.mycompany.appsistemahospitalar.entities.Agendamento;
+
 /**
  *
  * @author arthu
@@ -11,6 +13,10 @@ package com.mycompany.appsistemahospitalar;
 public class AppSistemaHospitalar {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Medico medico = new Medico();
+        medico.setId(1);
+        Agendamento agenda = new Agendamento();
+        agenda.setMedico(medico);
+        System.out.println("id = "+agenda.getMedico().getId());
     }
 }
