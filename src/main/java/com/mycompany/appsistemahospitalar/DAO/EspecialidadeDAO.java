@@ -6,8 +6,10 @@ package com.mycompany.appsistemahospitalar.DAO;
 
 import com.mycompany.appsistemahospitalar.BD.ConnectionBD;
 import com.mycompany.appsistemahospitalar.entities.Especialidade;
+import com.mysql.cj.util.TestUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -31,6 +33,33 @@ public class EspecialidadeDAO {
             ps.executeUpdate();
             
             System.out.println("Especialidade cadastrada!");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void listarEspecialidade(){
+        try {
+            //iniciando conexao com o banco de dados
+            Connection conn = ConnectionBD.conectar();
+            //comando slq para listar valores do banco
+            String command = 
+                    "SELECT *FROM especialidade";
+            PreparedStatement ps =  conn.prepareStatement(command);
+            //resultado do banco
+            ResultSet rs =  ps.executeQuery();
+            
+            while(rs.next()){
+                //atribuindo valores resgatado do banco
+                int id = rs.getInt("id_especialidade");
+                String nome = rs.getString("nome");
+                String descricacao = rs.getString("descricao");
+                
+                //listando no console
+                System.out.println("id: " +id);
+                System.out.println("nome: " +nome);
+                System.out.println("descricao: " +descricacao);
+            }
             
         } catch (Exception e) {
             e.printStackTrace();
