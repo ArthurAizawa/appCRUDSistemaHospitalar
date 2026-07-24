@@ -17,6 +17,10 @@ public class Especialidade {
         
     }
 
+    public void setId_especialidade(int id_especialidade) {
+        this.id_especialidade = id_especialidade;
+    }
+
     public Especialidade(int id_especialidade, String especialidade, String descricao) {
         this.id_especialidade = id_especialidade;
         this.especialidade = especialidade;
