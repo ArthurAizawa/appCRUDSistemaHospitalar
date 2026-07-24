@@ -4,7 +4,9 @@
 
 package com.mycompany.appsistemahospitalar;
 
+import com.mycompany.appsistemahospitalar.DAO.EspecialidadeDAO;
 import com.mycompany.appsistemahospitalar.entities.Agendamento;
+import com.mycompany.appsistemahospitalar.entities.Especialidade;
 
 /**
  *
@@ -13,10 +15,11 @@ import com.mycompany.appsistemahospitalar.entities.Agendamento;
 public class AppSistemaHospitalar {
 
     public static void main(String[] args) {
-        Medico medico = new Medico();
-        medico.setId(1);
-        Agendamento agenda = new Agendamento();
-        agenda.setMedico(medico);
-        System.out.println("id = "+agenda.getMedico().getId());
+        Especialidade especialidade = new Especialidade();
+        especialidade.setEspecialidade("Ginecologista");
+        especialidade.setDescricao("Medico do orgao feminino");
+        
+        EspecialidadeDAO espDAO = new EspecialidadeDAO();
+        espDAO.inserirEspecialidade(especialidade);
     }
 }

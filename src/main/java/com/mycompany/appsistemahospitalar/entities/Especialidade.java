@@ -12,6 +12,10 @@ public class Especialidade {
     private int id_especialidade;
     private String especialidade;
     private String descricao;
+    
+    public Especialidade(){
+        
+    }
 
     public Especialidade(int id_especialidade, String especialidade, String descricao) {
         this.id_especialidade = id_especialidade;
