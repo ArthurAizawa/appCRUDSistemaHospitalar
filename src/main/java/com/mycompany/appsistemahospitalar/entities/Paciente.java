@@ -17,18 +17,28 @@ public class Paciente {
     private String email;
     private String endereco;
     private LocalDate dataNascimento;
+    private int telefone;
     
     public Paciente(){
         
     }
 
-    public Paciente(int id_paciente, String nome, String cpf, String email, String endereco, LocalDate dataNascimento) {
+    public Paciente(int id_paciente, String nome, String cpf, String email, String endereco, LocalDate dataNascimento,int telefone) {
         this.id_paciente = id_paciente;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.endereco = endereco;
         this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+    }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
     }
 
     public int getId_paciente() {
