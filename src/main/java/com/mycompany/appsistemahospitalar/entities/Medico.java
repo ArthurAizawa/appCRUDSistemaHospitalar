@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.appsistemahospitalar;
+package com.mycompany.appsistemahospitalar.entities;
 
 import com.mycompany.appsistemahospitalar.entities.Especialidade;
 
@@ -14,19 +14,15 @@ public class Medico {
     private int id_medico;
     private String nome;
     private String crm;
-    private int tel;
+    private String tel;
     private String email;
     private Especialidade especialidade;
     
     public Medico(){
-        id_medico = 0;
-        nome = "";
-        crm = "";
-        tel = 0;
-        email = "0";
+        
     }
 
-    public Medico(int id_medico, String nome, String crm, int tel, String email, Especialidade especialidade) {
+    public Medico(int id_medico, String nome, String crm, String tel, String email, Especialidade especialidade) {
         this.id_medico = id_medico;
         this.nome = nome;
         this.crm = crm;
@@ -59,11 +55,11 @@ public class Medico {
         this.crm = crm;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 

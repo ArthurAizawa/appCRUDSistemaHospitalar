@@ -4,8 +4,9 @@
  */
 package com.mycompany.appsistemahospitalar.entities;
 
-import com.mycompany.appsistemahospitalar.Medico;
+import com.mycompany.appsistemahospitalar.entities.Medico;
 import com.mycompany.appsistemahospitalar.entities.Paciente;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
@@ -18,6 +19,9 @@ public class Agendamento {
     private String obs;
 
     private LocalTime horarioConsulta;
+    private LocalDate dataConsulta;
+
+   
 
     private Medico medico;
     private Paciente paciente;
@@ -81,5 +85,12 @@ public class Agendamento {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+     public LocalDate getDataConsulta() {
+        return dataConsulta;
+    }
+
+    public void setDataConsulta(LocalDate dataConsulta) {
+        this.dataConsulta = dataConsulta;
     }
 }
