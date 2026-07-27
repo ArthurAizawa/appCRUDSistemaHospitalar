@@ -79,5 +79,4 @@ public class Medico {
         this.especialidade = especialidade;
     }
     
-    
 }
