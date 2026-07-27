@@ -17,27 +17,27 @@ public class Paciente {
     private String email;
     private String endereco;
     private LocalDate dataNascimento;
-    private int telefone;
+    private String telefone;
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
     
     public Paciente(){
         
     }
 
-    public Paciente(int id_paciente, String nome, String cpf, String email, String endereco, LocalDate dataNascimento,int telefone) {
+    public Paciente(int id_paciente, String nome, String cpf, String email, String endereco, LocalDate dataNascimento, String telefone) {
         this.id_paciente = id_paciente;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.endereco = endereco;
         this.dataNascimento = dataNascimento;
-        this.telefone = telefone;
-    }
-
-    public int getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
 
