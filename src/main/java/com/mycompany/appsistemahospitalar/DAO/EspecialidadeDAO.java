@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,7 +45,8 @@ public class EspecialidadeDAO {
         }
     }
 
-    public void listarEspecialidade() {
+    public List<Especialidade> listarEspecialidade() {
+        List<Especialidade> list = new ArrayList<>();
         try {
             //iniciando conexao com o banco de dados
             Connection conn = ConnectionBD.conectar();
@@ -55,21 +58,20 @@ public class EspecialidadeDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                //atribuindo valores resgatado do banco
-                int id = rs.getInt("id_especialidade");
-                String nome = rs.getString("nome");
-                String descricacao = rs.getString("descricao");
 
-                //listando no console
-                System.out.println("id: " + id);
-                System.out.println("nome: " + nome);
-                System.out.println("descricao: " + descricacao);
+                Especialidade esp = new Especialidade();
+
+                esp.setId_especialidade(rs.getInt("id_especialidade"));
+                esp.setEspecialidade(rs.getString("nome"));
+                esp.setDescricao(rs.getString("descricao"));
+
+                list.add(esp);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return list;
     }
 
     public void buscarEspecialidade(int id) {
@@ -122,7 +124,7 @@ public class EspecialidadeDAO {
 
             ps.executeUpdate();
 
-            System.out.println("Especialidade " +id+" excluída com sucesso!");
+            System.out.println("Especialidade " + id + " excluída com sucesso!");
 
             ps.close();
             conn.close();

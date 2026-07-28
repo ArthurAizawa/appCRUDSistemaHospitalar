@@ -16,7 +16,7 @@ public class MedicoDAO {
             Connection conn = ConnectionBD.conectar();
 
             String sql = """
-                    INSERT INTO medico
+                    INSERT INTO medicos
                     (nome, crm, telefone, email, id_especialidade)
                     VALUES (?, ?, ?, ?, ?)
                     """;
@@ -48,7 +48,7 @@ public class MedicoDAO {
 
             Connection conn = ConnectionBD.conectar();
 
-            String sql = "SELECT * FROM medico";
+            String sql = "SELECT * FROM medicos";
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
