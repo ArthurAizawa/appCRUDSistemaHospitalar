@@ -163,11 +163,15 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_sairMenuItem1ActionPerformed
 
     private void pacienteCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteCadastroActionPerformed
-        
+        Cadastropaciente novoPaci = new Cadastropaciente();
+        desktopPane.add(novoPaci);
+        novoPaci.setVisible(true);
     }//GEN-LAST:event_pacienteCadastroActionPerformed
 
     private void agendamentoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoCadastroActionPerformed
-        // TODO add your handling code here:
+        CadastroAgendamento novoagen = new CadastroAgendamento();
+        desktopPane.add(novoagen);
+        novoagen.setVisible(true);
     }//GEN-LAST:event_agendamentoCadastroActionPerformed
 
     private void medicoConsultaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicoConsultaMenuItemActionPerformed
@@ -183,7 +187,10 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_agendamentoConsultaMenuItem1ActionPerformed
 
     private void especialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadeActionPerformed
-        // TODO add your handling code here:
+       
+        CadastroEspecialidade tela = new CadastroEspecialidade();
+        desktopPane.add(tela);
+        tela.setVisible(true);
     }//GEN-LAST:event_especialidadeActionPerformed
 
     /**
