@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.appsistemahospitalar.DAO;
-
 import com.mycompany.appsistemahospitalar.BD.ConnectionBD;
 import com.mycompany.appsistemahospitalar.entities.Paciente;
 import java.sql.Connection;

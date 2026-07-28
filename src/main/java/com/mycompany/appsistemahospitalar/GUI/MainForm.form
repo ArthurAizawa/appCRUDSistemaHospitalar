@@ -31,7 +31,6 @@
               <Properties>
                 <Property name="mnemonic" type="int" value="100"/>
                 <Property name="text" type="java.lang.String" value="Medico"/>
-                <Property name="actionCommand" type="java.lang.String" value="Medico"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="medicoCadastroActionPerformed"/>
@@ -132,7 +131,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="desktopPane" pref="280" max="32767" attributes="0"/>
+          <Component id="desktopPane" alignment="1" pref="280" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
