@@ -172,8 +172,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbEspecialidade">
-      <Properties>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbEspecialidadeActionPerformed"/>
       </Events>

@@ -199,7 +199,7 @@ public class CadastroMedico extends javax.swing.JInternalFrame {
         medico.setEmail(email.getText());
         Especialidade esp = (Especialidade) cbEspecialidade.getSelectedItem();
 
-        medico.setEspecialidade(esp);   // ESTA LINHA É ESSENCIAL
+        medico.setEspecialidade(esp);  
         MedicoDAO medicoDao = new MedicoDAO();
 
         medicoDao.inserirMedico(medico);
