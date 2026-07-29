@@ -12,6 +12,7 @@ public class Especialidade {
     private int id_especialidade;
     private String especialidade;
     private String descricao;
+    private String nome;
     
     public Especialidade(){
         
@@ -21,10 +22,11 @@ public class Especialidade {
         this.id_especialidade = id_especialidade;
     }
 
-    public Especialidade(int id_especialidade, String especialidade, String descricao) {
+    public Especialidade(int id_especialidade, String especialidade, String descricao, String nome) {
         this.id_especialidade = id_especialidade;
         this.especialidade = especialidade;
         this.descricao = descricao;
+        this.nome = nome;
     }
 
     public int getId_especialidade() {
@@ -45,6 +47,19 @@ public class Especialidade {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    @Override 
+    public String toString(){
+        return especialidade;
     }
     
 }

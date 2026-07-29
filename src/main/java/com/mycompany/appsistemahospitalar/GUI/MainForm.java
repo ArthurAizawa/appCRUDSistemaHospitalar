@@ -39,10 +39,11 @@ public class MainForm extends javax.swing.JFrame {
         medicoMenuItem = new javax.swing.JMenuItem();
         pacienteMenuItem = new javax.swing.JMenuItem();
         agendamentoMenuItem = new javax.swing.JMenuItem();
-        helpMenu1 = new javax.swing.JMenu();
+        especialidade = new javax.swing.JMenu();
         medicoConsultaMenuItem = new javax.swing.JMenuItem();
         pacienteConsultaMenuItem1 = new javax.swing.JMenuItem();
         agendamentoConsultaMenuItem1 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,7 +66,6 @@ public class MainForm extends javax.swing.JFrame {
 
         medicoMenuItem.setMnemonic('d');
         medicoMenuItem.setText("Medico");
-        medicoMenuItem.setActionCommand("Medico");
         medicoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 medicoMenuItemActionPerformed(evt);
@@ -93,8 +93,13 @@ public class MainForm extends javax.swing.JFrame {
 
         menuBar.add(editMenu);
 
-        helpMenu1.setMnemonic('h');
-        helpMenu1.setText("Consulta");
+        especialidade.setMnemonic('h');
+        especialidade.setText("Consulta");
+        especialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialidadeConsultaMenuItem1ActionPerformed(evt);
+            }
+        });
 
         medicoConsultaMenuItem.setMnemonic('d');
         medicoConsultaMenuItem.setText("Medico");
@@ -103,7 +108,7 @@ public class MainForm extends javax.swing.JFrame {
                 medicoConsultaMenuItemActionPerformed(evt);
             }
         });
-        helpMenu1.add(medicoConsultaMenuItem);
+        especialidade.add(medicoConsultaMenuItem);
 
         pacienteConsultaMenuItem1.setMnemonic('d');
         pacienteConsultaMenuItem1.setText("Paciente");
@@ -112,7 +117,7 @@ public class MainForm extends javax.swing.JFrame {
                 pacienteConsultaMenuItem1ActionPerformed(evt);
             }
         });
-        helpMenu1.add(pacienteConsultaMenuItem1);
+        especialidade.add(pacienteConsultaMenuItem1);
 
         agendamentoConsultaMenuItem1.setMnemonic('d');
         agendamentoConsultaMenuItem1.setText("Agendamento");
@@ -121,9 +126,13 @@ public class MainForm extends javax.swing.JFrame {
                 agendamentoConsultaMenuItem1ActionPerformed(evt);
             }
         });
-        helpMenu1.add(agendamentoConsultaMenuItem1);
+        especialidade.add(agendamentoConsultaMenuItem1);
 
-        menuBar.add(helpMenu1);
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Especialidade");
+        especialidade.add(jCheckBoxMenuItem1);
+
+        menuBar.add(especialidade);
 
         setJMenuBar(menuBar);
 
@@ -169,6 +178,10 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_agendamentoConsultaMenuItem1ActionPerformed
 
+    private void especialidadeConsultaMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadeConsultaMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_especialidadeConsultaMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -209,8 +222,9 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem agendamentoMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
+    private javax.swing.JMenu especialidade;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenuItem medicoConsultaMenuItem;
     private javax.swing.JMenuItem medicoMenuItem;
     private javax.swing.JMenuBar menuBar;
