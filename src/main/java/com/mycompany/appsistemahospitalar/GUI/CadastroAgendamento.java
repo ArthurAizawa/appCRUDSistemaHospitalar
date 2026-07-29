@@ -5,8 +5,16 @@
 package com.mycompany.appsistemahospitalar.GUI;
 
 import com.mycompany.appsistemahospitalar.DAO.AgendamentoDAO;
+import com.mycompany.appsistemahospitalar.DAO.MedicoDAO;
+import com.mycompany.appsistemahospitalar.DAO.PacienteDAO;
 import com.mycompany.appsistemahospitalar.entities.Agendamento;
-
+import com.mycompany.appsistemahospitalar.entities.Medico;
+import com.mycompany.appsistemahospitalar.entities.Paciente;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+    
 /**
  *
  * @author Samuel Freitas Costa
@@ -18,7 +26,11 @@ public class CadastroAgendamento extends javax.swing.JInternalFrame {
      */
     public CadastroAgendamento() {
         initComponents();
+        carregarMedico();
+        carregarPaciente();
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,6 +50,10 @@ public class CadastroAgendamento extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtObs = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cbMedico = new javax.swing.JComboBox<>();
+        cbPaciente = new javax.swing.JComboBox<>();
 
         jLabel1.setText("Data da Consulta:");
 
@@ -56,47 +72,82 @@ public class CadastroAgendamento extends javax.swing.JInternalFrame {
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(this::btnSalvarActionPerformed);
 
+        jLabel5.setText("Medico");
+
+        jLabel6.setText("Paciente");
+
+        cbMedico.addActionListener(this::cbMedicoActionPerformed);
+
+        cbPaciente.addActionListener(this::cbPacienteActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtData)
-                    .addComponent(txtHorario)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStatus)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtObs, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtObs, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(73, 73, 73))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(149, 149, 149))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(138, 138, 138))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(199, 199, 199)
                 .addComponent(btnSalvar)
-                .addGap(40, 40, 40))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(txtHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(btnSalvar)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -116,52 +167,100 @@ public class CadastroAgendamento extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
-        // Converte o texto da data para LocalDate
-        java.time.format.DateTimeFormatter formatadorData = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        java.time.LocalDate dataConvertida = java.time.LocalDate.parse(txtData.getText(), formatadorData);
-        
-        // Converte o texto da hora para LocalTime
-        java.time.format.DateTimeFormatter formatadorHora = java.time.format.DateTimeFormatter.ofPattern("HH:mm");
-        java.time.LocalTime horaConvertida = java.time.LocalTime.parse(txtHorario.getText(), formatadorHora);
+            // 1. Converte o texto da data para LocalDate
+            DateTimeFormatter formatadorData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate dataConvertida = java.time.LocalDate.parse(txtData.getText(), formatadorData);
+            
+            // 2. Converte o texto da hora para LocalTime
+            DateTimeFormatter formatadorHora = DateTimeFormatter.ofPattern("HH:mm");
+            LocalTime horaConvertida = LocalTime.parse(txtHorario.getText(), formatadorHora);
 
-        //  preenche os dados
-        Agendamento novoAgendamento = new Agendamento();
-        novoAgendamento.setDataConsulta(dataConvertida);
-        novoAgendamento.setHorarioConsulta(horaConvertida);
-        novoAgendamento.setStatus(txtStatus.getText());
-        novoAgendamento.setObs(txtObs.getText());
+            // 3. Preenche os dados de texto e data
+            Agendamento novoAgendamento = new Agendamento();
+            novoAgendamento.setDataConsulta(dataConvertida);
+            novoAgendamento.setHorarioConsulta(horaConvertida);
+            novoAgendamento.setStatus(txtStatus.getText());
+            novoAgendamento.setObs(txtObs.getText());
 
-        // Conecta com o DAO e salva no banco
-        AgendamentoDAO dao = new AgendamentoDAO();
-        dao.inserirAgendamento(novoAgendamento);
+            // 4. Captura os objetos Médico e Paciente das Caixas de Combinação e vincula ao Agendamento
+            Medico medico  = (Medico)cbMedico.getSelectedItem();
+            novoAgendamento.setMedico(medico);
 
-        javax.swing.JOptionPane.showMessageDialog(this, "Agendamento salvo com sucesso!");
-        
-        // Limpa os campos da tela
-        txtData.setText("");
-        txtHorario.setText("");
-        txtStatus.setText("");
-        txtObs.setText("");
+            com.mycompany.appsistemahospitalar.entities.Paciente pacienteSelecionado = (com.mycompany.appsistemahospitalar.entities.Paciente) cbPaciente.getSelectedItem();
+            novoAgendamento.setPaciente(pacienteSelecionado);
 
-    } catch (java.time.format.DateTimeParseException e) {
-        // Captura o erro se o usuário digitar a data ou hora em formato incorreto
-        javax.swing.JOptionPane.showMessageDialog(this, "Formato inválido! Use DD/MM/AAAA para data e HH:MM para hora.");
-    } catch (Exception e) {
-        // Captura falhas de conexão com o banco de dados
-        javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar agendamento: " + e.getMessage());
-    }
+            // 5. Conecta com o DAO e salva no banco
+            AgendamentoDAO dao = new AgendamentoDAO();
+            dao.inserirAgendamento(novoAgendamento);
+
+            JOptionPane.showMessageDialog(this, "Agendamento salvo com sucesso!");
+            
+            // 6. Limpa os campos da tela
+            txtData.setText("");
+            txtHorario.setText("");
+            txtStatus.setText("");
+            txtObs.setText("");
+
+        } catch (java.time.format.DateTimeParseException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Formato inválido! Use DD/MM/AAAA para data e HH:MM para hora.");
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar agendamento: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void cbMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMedicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbMedicoActionPerformed
 
+    private void cbPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPacienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbPacienteActionPerformed
+
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<Medico> cbMedico;
+    private javax.swing.JComboBox<Paciente> cbPaciente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtHorario;
     private javax.swing.JTextField txtObs;
     private javax.swing.JTextField txtStatus;
     // End of variables declaration//GEN-END:variables
+
+    private void carregarMedico() {
+        MedicoDAO dao = new MedicoDAO();
+
+        cbMedico.removeAllItems();
+
+        for (Medico medico : dao.listarMedicos()) {
+
+            System.out.println("Adicionando: " + medico);
+
+            cbMedico.addItem(medico);
+        }
+
+        System.out.println("Itens no Combo: " + cbMedico.getItemCount());
+    }
+
+    private void carregarPaciente() {
+        PacienteDAO dao = new PacienteDAO();
+        
+        for(Paciente paciente : dao.listarPacientes()){
+            System.out.println("Adicionando: " + paciente);
+            
+            cbPaciente.addItem(paciente);
+        }
+        System.out.println("Itens no Combo: "+cbPaciente.getItemCount());
+    }
+    
 }
+
+
+

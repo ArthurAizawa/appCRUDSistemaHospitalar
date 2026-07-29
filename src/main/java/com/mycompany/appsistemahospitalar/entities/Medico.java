@@ -79,4 +79,8 @@ public class Medico {
         this.especialidade = especialidade;
     }
     
+    @Override
+    public String toString() {
+        return nome;
+    }
 }

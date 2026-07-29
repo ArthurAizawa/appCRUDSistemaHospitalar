@@ -38,26 +38,33 @@ public class PacienteDAO {
         }
     }
 
-    public void listarPacientes() {
+   public java.util.List<Paciente> listarPacientes() {
+        java.util.List<Paciente> list = new java.util.ArrayList<>();
         try {
             Connection conn = ConnectionBD.conectar();
-
             String sql = "SELECT * FROM paciente";
-
             PreparedStatement ps = conn.prepareStatement(sql);
-
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
-                System.out.println("ID: " + rs.getInt("id_paciente"));
-                System.out.println("Nome: " + rs.getString("nome"));
-                System.out.println("CPF: " + rs.getString("cpf"));
-                System.out.println("Nascimento: " + rs.getDate("data_nascimento"));
-                System.out.println("Telefone: " + rs.getString("telefone"));
-                System.out.println("Email: " + rs.getString("email"));
-                System.out.println("Endereço: " + rs.getString("endereco"));
-                System.out.println("------------------------------");
+                Paciente paciente = new Paciente();
+                
+                // Correção 1: Usando o nome correto do método de ID da sua classe
+                paciente.setId_paciente(rs.getInt("id_paciente"));
+                paciente.setNome(rs.getString("nome"));
+                paciente.setCpf(rs.getString("cpf"));
+                
+                // Correção 2: Convertendo o Date do SQL para o LocalDate do Java
+                java.sql.Date dataBanco = rs.getDate("data_nascimento");
+                if (dataBanco != null) {
+                    paciente.setDataNascimento(dataBanco.toLocalDate());
+                }
+                
+                paciente.setTelefone(rs.getString("telefone"));
+                paciente.setEmail(rs.getString("email"));
+                paciente.setEndereco(rs.getString("endereco"));
+                
+                list.add(paciente);
             }
 
             rs.close();
@@ -67,6 +74,7 @@ public class PacienteDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return list;
     }
 
     // Buscar por ID
