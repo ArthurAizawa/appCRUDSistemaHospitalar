@@ -4,6 +4,8 @@
  */
 package com.mycompany.appsistemahospitalar.GUI;
 
+import com.mycompany.appsistemahospitalar.entities.Especialidade;
+
 /**
  *
  * @author arthu
@@ -221,9 +223,7 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_pacienteCadastroActionPerformed
 
     private void agendamentoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoCadastroActionPerformed
-        CadastroAgendamento novoagen = new CadastroAgendamento();
-        desktopPane.add(novoagen);
-        novoagen.setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_agendamentoCadastroActionPerformed
 
     private void medicoConsultaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicoConsultaMenuItemActionPerformed
@@ -239,10 +239,10 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_agendamentoConsultaMenuItem1ActionPerformed
 
     private void especialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadeActionPerformed
-       
-        CadastroEspecialidade tela = new CadastroEspecialidade();
-        desktopPane.add(tela);
-        tela.setVisible(true);
+        CadastroEspecialidade form = new CadastroEspecialidade();
+        desktopPane.add(form);
+        form.setVisible(true);
+        
     }//GEN-LAST:event_especialidadeActionPerformed
 
     private void medicoAtualizarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicoAtualizarMenuActionPerformed

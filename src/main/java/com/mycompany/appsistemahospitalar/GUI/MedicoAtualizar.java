@@ -8,6 +8,7 @@ import com.mycompany.appsistemahospitalar.DAO.EspecialidadeDAO;
 import com.mycompany.appsistemahospitalar.DAO.MedicoDAO;
 import com.mycompany.appsistemahospitalar.entities.Especialidade;
 import com.mycompany.appsistemahospitalar.entities.Medico;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -217,27 +218,100 @@ public class MedicoAtualizar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextTelefone1ActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        Medico medico = (Medico) cbMedico.getSelectedItem();
+        try {
 
-        medico.setNome(jTextNome.getText());
-        medico.setCrm(JTextCrm.getText());
-        medico.setCrm(jTextCpf.getText());
-        medico.setTel(jTextTelefone1.getText());
-        medico.setEmail(jTextEmail.getText());
-        Especialidade esp = (Especialidade) cbEspecialidade.getSelectedItem();
+            if (jTextNome.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "O nome é obrigatório!",
+                        "Campo inválido",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-        medico.setEspecialidade(esp);
-        MedicoDAO medicoDao = new MedicoDAO();
+            if (JTextCrm.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "O CRM é obrigatório!",
+                        "Campo inválido",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-        medicoDao.atualizarMedico(medico);
-        javax.swing.JOptionPane.showMessageDialog(this, "Paciente salvo com sucesso!");
+            if (jTextTelefone1.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "O telefone é obrigatório!",
+                        "Campo inválido",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-        // Limpa os campos após salvar
-        jTextNome.setText("");
-        JTextCrm.setText("");
-        jTextTelefone1.setText("");
-        jTextCpf.setText("");
-        jTextEmail.setText("");
+            if (jTextTelefone1.getText().trim().length() != 9) {
+                JOptionPane.showMessageDialog(this,
+                        "O telefone deve conter exatamente 9 dígitos.",
+                        "Telefone inválido",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (!jTextTelefone1.getText().matches("\\d+")) {
+                JOptionPane.showMessageDialog(this,
+                        "O telefone deve conter apenas números.",
+                        "Telefone inválido",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (jTextEmail.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "O e-mail é obrigatório!",
+                        "Campo inválido",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (!jTextEmail.getText().contains("@")) {
+                JOptionPane.showMessageDialog(this,
+                        "Digite um e-mail válido.",
+                        "E-mail inválido",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (cbEspecialidade.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this,
+                        "Selecione uma especialidade.",
+                        "Campo inválido",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            Medico medico = (Medico) cbMedico.getSelectedItem();
+
+            medico.setNome(jTextNome.getText());
+            medico.setCrm(JTextCrm.getText());
+            medico.setCrm(jTextCpf.getText());
+            medico.setTel(jTextTelefone1.getText());
+            medico.setEmail(jTextEmail.getText());
+            Especialidade esp = (Especialidade) cbEspecialidade.getSelectedItem();
+
+            medico.setEspecialidade(esp);
+            MedicoDAO medicoDao = new MedicoDAO();
+
+            medicoDao.atualizarMedico(medico);
+            javax.swing.JOptionPane.showMessageDialog(this, "Paciente salvo com sucesso!");
+
+            // Limpa os campos após salvar
+            jTextNome.setText("");
+            JTextCrm.setText("");
+            jTextTelefone1.setText("");
+            jTextCpf.setText("");
+            jTextEmail.setText("");
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Erro: " + e.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jTextEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEmailActionPerformed
