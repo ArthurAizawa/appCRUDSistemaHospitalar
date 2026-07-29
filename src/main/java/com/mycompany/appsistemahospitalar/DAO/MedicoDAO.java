@@ -5,6 +5,8 @@ import com.mycompany.appsistemahospitalar.entities.Medico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MedicoDAO {
 
@@ -16,7 +18,7 @@ public class MedicoDAO {
             Connection conn = ConnectionBD.conectar();
 
             String sql = """
-                    INSERT INTO medico
+                    INSERT INTO medicos
                     (nome, crm, telefone, email, id_especialidade)
                     VALUES (?, ?, ?, ?, ?)
                     """;
@@ -42,13 +44,13 @@ public class MedicoDAO {
     }
 
     // Listar
-    public void listarMedicos() {
-
+    public List<Medico> listarMedicos() {
+        List<Medico> list = new ArrayList<>();
         try {
-
+            
             Connection conn = ConnectionBD.conectar();
 
-            String sql = "SELECT * FROM medico";
+            String sql = "SELECT * FROM medicos";
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -56,24 +58,25 @@ public class MedicoDAO {
 
             while (rs.next()) {
 
-                System.out.println("ID: " + rs.getInt("id_medico"));
-                System.out.println("Nome: " + rs.getString("nome"));
-                System.out.println("CRM: " + rs.getString("crm"));
-                System.out.println("Telefone: " + rs.getString("telefone"));
-                System.out.println("Email: " + rs.getString("email"));
-                System.out.println("Especialidade: " + rs.getInt("id_especialidade"));
-
-                System.out.println("--------------------------");
+                Medico medico = new Medico();
+                
+                medico.setNome(rs.getString("nome"));
+                medico.setCrm(rs.getString("crm"));
+                medico.setEmail(rs.getString("email"));
+                medico.setTel(rs.getString("telefone"));
+                medico.setId(rs.getInt("id_medico"));
+                list.add(medico);
             }
 
             rs.close();
             ps.close();
             conn.close();
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return list;
+        
     }
 
     // Buscar
@@ -84,7 +87,7 @@ public class MedicoDAO {
             Connection conn = ConnectionBD.conectar();
 
             String sql = """
-                    SELECT * FROM medico
+                    SELECT * FROM medicos
                     WHERE id_medico = ?
                     """;
 
@@ -127,7 +130,7 @@ public class MedicoDAO {
             Connection conn = ConnectionBD.conectar();
 
             String sql = """
-                    UPDATE medico
+                    UPDATE medicos
                     SET nome = ?,
                         crm = ?,
                         telefone = ?,

@@ -31,6 +31,7 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -68,28 +69,28 @@ public class MainForm extends javax.swing.JFrame {
         medicoMenuItem.setText("Medico");
         medicoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medicoMenuItemActionPerformed(evt);
+                pacienteCadastroActionPerformed(evt);
             }
         });
-        editMenu.add(medicoMenuItem);
+        editMenu.add(pacienteCadastro);
 
-        pacienteMenuItem.setMnemonic('d');
-        pacienteMenuItem.setText("Paciente");
-        pacienteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        agendamentoCadastro.setMnemonic('d');
+        agendamentoCadastro.setText("Agendamento");
+        agendamentoCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pacienteMenuItemActionPerformed(evt);
+                agendamentoCadastroActionPerformed(evt);
             }
         });
-        editMenu.add(pacienteMenuItem);
+        editMenu.add(agendamentoCadastro);
 
-        agendamentoMenuItem.setMnemonic('d');
-        agendamentoMenuItem.setText("Agendamento");
-        agendamentoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        especialidade.setMnemonic('d');
+        especialidade.setText("Especialidade");
+        especialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agendamentoMenuItemActionPerformed(evt);
+                especialidadeActionPerformed(evt);
             }
         });
-        editMenu.add(agendamentoMenuItem);
+        editMenu.add(especialidade);
 
         menuBar.add(editMenu);
 
@@ -134,6 +135,47 @@ public class MainForm extends javax.swing.JFrame {
 
         menuBar.add(especialidade);
 
+        atualizarMenu.setMnemonic('h');
+        atualizarMenu.setText("Atualizar");
+
+        medicoAtualizarMenu.setMnemonic('d');
+        medicoAtualizarMenu.setText("Medico");
+        medicoAtualizarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medicoAtualizarMenuActionPerformed(evt);
+            }
+        });
+        atualizarMenu.add(medicoAtualizarMenu);
+
+        pacienteAtualizarMenuItem.setMnemonic('d');
+        pacienteAtualizarMenuItem.setText("Paciente");
+        pacienteAtualizarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pacienteAtualizarMenuItemActionPerformed(evt);
+            }
+        });
+        atualizarMenu.add(pacienteAtualizarMenuItem);
+
+        agendamentoAtualizarMenu.setMnemonic('d');
+        agendamentoAtualizarMenu.setText("Agendamento");
+        agendamentoAtualizarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentoAtualizarMenuActionPerformed(evt);
+            }
+        });
+        atualizarMenu.add(agendamentoAtualizarMenu);
+
+        especialidadeAtualizarMenu.setMnemonic('d');
+        especialidadeAtualizarMenu.setText("Especialidade");
+        especialidadeAtualizarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialidadeAtualizarMenuActionPerformed(evt);
+            }
+        });
+        atualizarMenu.add(especialidadeAtualizarMenu);
+
+        menuBar.add(atualizarMenu);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,34 +186,43 @@ public class MainForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void medicoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicoMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_medicoMenuItemActionPerformed
+    private void medicoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicoCadastroActionPerformed
+        CadastroMedico form = new CadastroMedico();
+        
+        desktopPane.add(form);
+        form.setVisible(true);
+    }//GEN-LAST:event_medicoCadastroActionPerformed
 
     private void sairMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sairMenuItem1ActionPerformed
 
-    private void pacienteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pacienteMenuItemActionPerformed
+    private void pacienteCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteCadastroActionPerformed
 
-    private void agendamentoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_agendamentoMenuItemActionPerformed
+        CadastroPaciente form = new CadastroPaciente();
+        
+        desktopPane.add(form);
+        form.setVisible(true);
+    }//GEN-LAST:event_pacienteCadastroActionPerformed
+
+    private void agendamentoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoCadastroActionPerformed
+        CadastroAgendamento novoagen = new CadastroAgendamento();
+        desktopPane.add(novoagen);
+        novoagen.setVisible(true);
+    }//GEN-LAST:event_agendamentoCadastroActionPerformed
 
     private void medicoConsultaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicoConsultaMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_medicoConsultaMenuItemActionPerformed
 
     private void pacienteConsultaMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteConsultaMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_pacienteConsultaMenuItem1ActionPerformed
 
     private void agendamentoConsultaMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoConsultaMenuItem1ActionPerformed
@@ -218,18 +269,20 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem agendamentoAtualizarMenu;
+    private javax.swing.JMenuItem agendamentoCadastro;
     private javax.swing.JMenuItem agendamentoConsultaMenuItem1;
-    private javax.swing.JMenuItem agendamentoMenuItem;
+    private javax.swing.JMenu atualizarMenu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu especialidade;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenuItem medicoConsultaMenuItem;
-    private javax.swing.JMenuItem medicoMenuItem;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem pacienteAtualizarMenuItem;
+    private javax.swing.JMenuItem pacienteCadastro;
     private javax.swing.JMenuItem pacienteConsultaMenuItem1;
-    private javax.swing.JMenuItem pacienteMenuItem;
     private javax.swing.JMenuItem sairMenuItem1;
     // End of variables declaration//GEN-END:variables
 
