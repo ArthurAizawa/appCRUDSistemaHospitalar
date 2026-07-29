@@ -11,6 +11,7 @@ import java.time.LocalDate;
  * @author arthu
  */
 public class Paciente {
+
     private int id_paciente;
     private String nome;
     private String cpf;
@@ -26,9 +27,9 @@ public class Paciente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
-    public Paciente(){
-        
+
+    public Paciente() {
+
     }
 
     public Paciente(int id_paciente, String nome, String cpf, String email, String endereco, LocalDate dataNascimento, String telefone) {
@@ -88,5 +89,9 @@ public class Paciente {
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-   
+
+    public String toString() {
+
+        return nome;
+    }
 }

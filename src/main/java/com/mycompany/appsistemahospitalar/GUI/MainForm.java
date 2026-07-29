@@ -213,10 +213,13 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_sairMenuItem1ActionPerformed
 
     private void pacienteCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteCadastroActionPerformed
+
+
         CadastroPaciente form = new CadastroPaciente();
         
         desktopPane.add(form);
         form.setVisible(true);
+
     }//GEN-LAST:event_pacienteCadastroActionPerformed
 
     private void agendamentoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoCadastroActionPerformed
