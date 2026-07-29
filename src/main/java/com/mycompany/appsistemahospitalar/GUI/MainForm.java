@@ -31,6 +31,7 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -44,6 +45,13 @@ public class MainForm extends javax.swing.JFrame {
         medicoConsultaMenuItem = new javax.swing.JMenuItem();
         pacienteConsultaMenuItem1 = new javax.swing.JMenuItem();
         agendamentoConsultaMenuItem1 = new javax.swing.JMenuItem();
+        atualizarMenu = new javax.swing.JMenu();
+        medicoAtualizarMenu = new javax.swing.JMenuItem();
+        pacienteAtualizarMenuItem = new javax.swing.JMenuItem();
+        agendamentoAtualizarMenu = new javax.swing.JMenuItem();
+        especialidadeAtualizarMenu = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,7 +74,6 @@ public class MainForm extends javax.swing.JFrame {
 
         medicoCadastro.setMnemonic('d');
         medicoCadastro.setText("Medico");
-        medicoCadastro.setActionCommand("Medico");
         medicoCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 medicoCadastroActionPerformed(evt);
@@ -135,6 +142,47 @@ public class MainForm extends javax.swing.JFrame {
 
         menuBar.add(helpMenu1);
 
+        atualizarMenu.setMnemonic('h');
+        atualizarMenu.setText("Atualizar");
+
+        medicoAtualizarMenu.setMnemonic('d');
+        medicoAtualizarMenu.setText("Medico");
+        medicoAtualizarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medicoAtualizarMenuActionPerformed(evt);
+            }
+        });
+        atualizarMenu.add(medicoAtualizarMenu);
+
+        pacienteAtualizarMenuItem.setMnemonic('d');
+        pacienteAtualizarMenuItem.setText("Paciente");
+        pacienteAtualizarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pacienteAtualizarMenuItemActionPerformed(evt);
+            }
+        });
+        atualizarMenu.add(pacienteAtualizarMenuItem);
+
+        agendamentoAtualizarMenu.setMnemonic('d');
+        agendamentoAtualizarMenu.setText("Agendamento");
+        agendamentoAtualizarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentoAtualizarMenuActionPerformed(evt);
+            }
+        });
+        atualizarMenu.add(agendamentoAtualizarMenu);
+
+        especialidadeAtualizarMenu.setMnemonic('d');
+        especialidadeAtualizarMenu.setText("Especialidade");
+        especialidadeAtualizarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialidadeAtualizarMenuActionPerformed(evt);
+            }
+        });
+        atualizarMenu.add(especialidadeAtualizarMenu);
+
+        menuBar.add(atualizarMenu);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,9 +211,11 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_sairMenuItem1ActionPerformed
 
     private void pacienteCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteCadastroActionPerformed
-        Cadastropaciente novoPaci = new Cadastropaciente();
-        desktopPane.add(novoPaci);
-        novoPaci.setVisible(true);
+
+        CadastroPaciente form = new CadastroPaciente();
+        
+        desktopPane.add(form);
+        form.setVisible(true);
     }//GEN-LAST:event_pacienteCadastroActionPerformed
 
     private void agendamentoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoCadastroActionPerformed
@@ -179,7 +229,7 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_medicoConsultaMenuItemActionPerformed
 
     private void pacienteConsultaMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteConsultaMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_pacienteConsultaMenuItem1ActionPerformed
 
     private void agendamentoConsultaMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoConsultaMenuItem1ActionPerformed
@@ -192,6 +242,24 @@ public class MainForm extends javax.swing.JFrame {
         desktopPane.add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_especialidadeActionPerformed
+
+    private void medicoAtualizarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicoAtualizarMenuActionPerformed
+        MedicoAtualizar form = new MedicoAtualizar();
+        desktopPane.add(form);
+        form.setVisible(true);
+    }//GEN-LAST:event_medicoAtualizarMenuActionPerformed
+
+    private void pacienteAtualizarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteAtualizarMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pacienteAtualizarMenuItemActionPerformed
+
+    private void agendamentoAtualizarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentoAtualizarMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agendamentoAtualizarMenuActionPerformed
+
+    private void especialidadeAtualizarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadeAtualizarMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_especialidadeAtualizarMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,16 +297,22 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem agendamentoAtualizarMenu;
     private javax.swing.JMenuItem agendamentoCadastro;
     private javax.swing.JMenuItem agendamentoConsultaMenuItem1;
+    private javax.swing.JMenu atualizarMenu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem especialidade;
+    private javax.swing.JMenuItem especialidadeAtualizarMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem medicoAtualizarMenu;
     private javax.swing.JMenuItem medicoCadastro;
     private javax.swing.JMenuItem medicoConsultaMenuItem;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem pacienteAtualizarMenuItem;
     private javax.swing.JMenuItem pacienteCadastro;
     private javax.swing.JMenuItem pacienteConsultaMenuItem1;
     private javax.swing.JMenuItem sairMenuItem1;

@@ -11,12 +11,12 @@ import com.mycompany.appsistemahospitalar.DAO.PacienteDAO;
  *
  * @author Samuel Freitas Costa
  */
-public class Cadastropaciente extends javax.swing.JInternalFrame {
+public class CadastroPaciente extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Cadastropaciente
      */
-    public Cadastropaciente() {
+    public CadastroPaciente() {
         initComponents();
     }
 
