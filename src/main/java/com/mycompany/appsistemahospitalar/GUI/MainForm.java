@@ -213,8 +213,11 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_sairMenuItem1ActionPerformed
 
     private void pacienteCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteCadastroActionPerformed
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ac8ee622604217ae42f64be62274a288ddd0c0aa
         CadastroPaciente form = new CadastroPaciente();
         
         desktopPane.add(form);
