@@ -6,7 +6,7 @@ package com.mycompany.appsistemahospitalar.DAO;
 
 import com.mycompany.appsistemahospitalar.BD.ConnectionBD;
 import com.mycompany.appsistemahospitalar.entities.Especialidade;
-import com.mysql.cj.util.TestUtils;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,7 +46,7 @@ public class EspecialidadeDAO {
     }
 
     public List<Especialidade> listarEspecialidade() {
-        List<Especialidade> list = new ArrayList<>();
+        List<Especialidade> list = new ArrayList();
         try {
             //iniciando conexao com o banco de dados
             Connection conn = ConnectionBD.conectar();
@@ -71,10 +71,13 @@ public class EspecialidadeDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
         return list;
     }
 
-    public void buscarEspecialidade(int id) {
+    public Especialidade buscarEspecialidade(int id) {
+        
+        Especialidade esp = null;
 
         try {
             //iniciando conexao com o banco de dados
@@ -91,7 +94,7 @@ public class EspecialidadeDAO {
             ResultSet rs = ps.executeQuery();
             //se encontrar a especialidade:
             if (rs.next()) {
-                Especialidade esp = new Especialidade();
+                esp = new Especialidade();
 
                 int id_esp = rs.getInt("id_especialidade");
                 String nome = rs.getString("nome");
@@ -107,6 +110,8 @@ public class EspecialidadeDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EspecialidadeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return esp;
     }
 
     public void removerEspecialidade(int id) {
